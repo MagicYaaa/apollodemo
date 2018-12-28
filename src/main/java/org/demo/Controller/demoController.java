@@ -28,12 +28,12 @@ public class demoController {
 
     @RequestMapping("/people")
     @ResponseBody
-    String method(){
+    String method(){ //通过apollo placeholder实现people类中属性的更新,
         return people.toString();
     }
 
     @RequestMapping("/application")
-    @ResponseBody
+    @ResponseBody  //通过EnableApolloConfig注解，将application命名空间的配置注入spring环境中,所以我们可以直接获取环境中的属性
     String method2(){ //获取配置文件信息
         return "a="+env.getProperty("a")+
                 " b="+env.getProperty("b");
@@ -41,7 +41,7 @@ public class demoController {
 
     @RequestMapping("/listener")
     @ResponseBody
-    String method3(){
+    String method3(){   //触发监听器,这里是一种API实现方式，同样也有通过注解实现的方式，具体请查看文档
         Config config = ConfigService.getAppConfig(); //config instance is singleton for each namespace and is never null
         config.addChangeListener(new ConfigChangeListener() {
             @Override
@@ -53,7 +53,6 @@ public class demoController {
                 }
             }
         });
-        return "Listener";
+        return "触发Listener";
     }
-
 }
