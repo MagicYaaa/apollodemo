@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @create: 2018-12-27 15:51
  **/
 @Configuration
-@EnableApolloConfig("people")//注入Demo.people 命名空间的配置到环境中
+@EnableApolloConfig("people")//注入Demo.people 命名空间的配置注入到环境中
 public class AppConfig {
     @Bean
     public People people(){

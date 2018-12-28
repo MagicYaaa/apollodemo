@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
  **/
 
 public class People {
-    @Value("${name:Tom}")
+    @Value("${name:Tom}") //"%{key:默认值}" ，第二个参数是默认值，获取不到相应value时，以默认值代替
     private String name;
     @Value("${high:180}")
     private String high;
